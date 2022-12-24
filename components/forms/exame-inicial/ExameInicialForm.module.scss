@@ -1,0 +1,11 @@
+.formContainer {
+  padding: 15px;
+  max-width: 900px;
+  margin: auto;
+
+  .fields {
+    > div {
+      margin-bottom: 25px;
+    }
+  }
+}
