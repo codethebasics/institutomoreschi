@@ -353,6 +353,9 @@ export default function ExameInicialForm() {
         <Text fontSize="3xl" fontWeight={'bold'} mb={2}>
           Exame Físico
         </Text>
+        <Text fontSize="1xl" fontWeight={'bold'} mb={2}>
+          Extra oral
+        </Text>
         <Box className={styles.fields}>
           <FormControl>
             <FormLabel>Pele</FormLabel>
@@ -360,7 +363,8 @@ export default function ExameInicialForm() {
               <InputLeftElement pointerEvents="none" color={'gray.400'}>
                 <PaletteIcon />
               </InputLeftElement>
-              <Input variant={'filled'} type="number" />
+
+              <Input variant={'filled'} />
             </InputGroup>
           </FormControl>
           <FormControl>
@@ -369,8 +373,50 @@ export default function ExameInicialForm() {
               <InputLeftElement pointerEvents="none" color={'gray.400'}>
                 <FaceIcon />
               </InputLeftElement>
-              <Input variant={'filled'} type="number" />
+
+              <Input variant={'filled'} />
             </InputGroup>
+          </FormControl>
+          <FormControl>
+            <FormLabel>Linfonodos</FormLabel>
+            <Input variant={'filled'} />
+          </FormControl>
+        </Box>
+        <Text fontSize="1xl" fontWeight={'bold'} mb={2}>
+          Intra oral
+        </Text>
+        <Box className={styles.fields}>
+          <FormControl>
+            <FormLabel>Lábios</FormLabel>
+            <Input variant={'filled'} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Lingual</FormLabel>
+            <Input variant={'filled'} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Assoalho bucal</FormLabel>
+            <Input variant={'filled'} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Palato duro / Palato mole</FormLabel>
+            <Input variant={'filled'} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Mucosa jugal</FormLabel>
+            <Input variant={'filled'} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Mucosa aleolar</FormLabel>
+            <Input variant={'filled'} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Orafaringe / Retromolar</FormLabel>
+            <Input variant={'filled'} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Descrição da lesão (no caso de alterações)</FormLabel>
+            <Textarea resize={'none'} variant={'filled'} />
           </FormControl>
         </Box>
       </Box>
