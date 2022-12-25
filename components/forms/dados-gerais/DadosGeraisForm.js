@@ -9,14 +9,11 @@ import {
   Textarea,
   Switch,
   Box,
-  Center,
-  Divider,
   InputGroup,
-  InputLeftElement,
-  Button
+  InputLeftElement
 } from '@chakra-ui/react'
 
-import { PhoneIcon, ArrowForwardIcon, DeleteIcon } from '@chakra-ui/icons'
+import { PhoneIcon } from '@chakra-ui/icons'
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation'
 import MailIcon from '@mui/icons-material/Mail'
 import BadgeIcon from '@mui/icons-material/Badge'
