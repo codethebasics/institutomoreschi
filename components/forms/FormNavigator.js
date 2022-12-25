@@ -4,7 +4,7 @@ import DadosGeraisForm from './dados-gerais/DadosGeraisForm'
 import ExameInicialForm from './exame-inicial/ExameInicialForm'
 
 import { useState } from 'react'
-import { Flex, Button, Center, Divider } from '@chakra-ui/react'
+import { Flex, Button } from '@chakra-ui/react'
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@chakra-ui/icons'
 
 const Wizard = ({ step }) => {
