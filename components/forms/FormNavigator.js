@@ -2,9 +2,10 @@ import styles from './FormNavigator.module.scss'
 
 import DadosGeraisForm from './dados-gerais/DadosGeraisForm'
 import ExameInicialForm from './exame-inicial/ExameInicialForm'
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 
 import { useState } from 'react'
-import { Flex, Button } from '@chakra-ui/react'
+import { Flex, Box, Button, Link } from '@chakra-ui/react'
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@chakra-ui/icons'
 
 const Wizard = ({ step }) => {
@@ -18,11 +19,26 @@ const Wizard = ({ step }) => {
   }
 }
 
+const BackTop = () => {
+  return (
+    <Box className={styles.backTop}>
+      <Link href="#formNavigatorContainer">
+        <ArrowUpwardIcon />
+      </Link>
+    </Box>
+  )
+}
+
 export default function FormNavigator() {
   const [step, setStep] = useState(0)
 
   return (
-    <div className={styles.formNavigatorContainer} direction={'column'}>
+    <Box
+      className={styles.formNavigatorContainer}
+      direction={'column'}
+      id={'formNavigatorContainer'}
+      pt={10}
+    >
       <Wizard step={step} />
       <Flex
         className={styles.footer}
@@ -66,6 +82,7 @@ export default function FormNavigator() {
           </Flex>
         </Flex>
       </Flex>
-    </div>
+      <BackTop />
+    </Box>
   )
 }
