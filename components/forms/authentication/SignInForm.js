@@ -4,7 +4,8 @@ import {
     FormLabel,
     Link, 
     Text,
-    Image
+    Image,
+    useToast
 } from "@chakra-ui/react"
 import styled from "@emotion/styled"
 
@@ -52,7 +53,22 @@ const Button = styled.button`
     width: 100%;
 `;
 
+
 export default function SignInForm() {
+    const toast = useToast();
+
+    const message = (type, heading, text) => {
+        toast({
+            title: heading,
+            description: text,
+            status: type,
+            duration: 5000,
+            variant: 'subtle',
+            position: 'top',
+            isClosable: true
+        })
+    }
+
     return (
         <Flex 
             justifyContent={'center'}
@@ -84,7 +100,16 @@ export default function SignInForm() {
                             direction={'column'} 
                             alignItems={'center'}
                         >
-                            <Button type={'primary'} width={'100%'}>Entrar</Button>
+                            <Button 
+                                type={'primary'} 
+                                width={'100%'}
+                                onClick={() => message(
+                                    'info', 
+                                    'Sistema indisponível', 
+                                    'Sistema em manutenção. Tente novamente mais tarde')}
+                            >
+                                Entrar
+                            </Button>
                             <Link mt={5}>Esqueci a senha</Link>
                         </Flex>
                     </FormControl>
