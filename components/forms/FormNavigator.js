@@ -5,7 +5,7 @@ import ExameInicialForm from './exame-inicial/ExameInicialForm'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 
 import { useState } from 'react'
-import { Flex, Box, Button, Link } from '@chakra-ui/react'
+import { Flex, Box, Button, Link, Tooltip } from '@chakra-ui/react'
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@chakra-ui/icons'
 
 const Wizard = ({ step }) => {
@@ -21,11 +21,26 @@ const Wizard = ({ step }) => {
 
 const BackTop = () => {
   return (
-    <Box className={styles.backTop}>
-      <Link href="#formNavigatorContainer">
-        <ArrowUpwardIcon />
-      </Link>
-    </Box>
+    <Tooltip hasArrow label="Topo">
+      <Box className={styles.backTop}>
+        <Link href="#formNavigatorContainer">
+          <ArrowUpwardIcon />
+        </Link>
+      </Box>
+    </Tooltip>
+  )
+}
+
+const ClearFormButton = ({ onClear }) => {
+  return (
+    <Button
+      rightIcon={<DeleteIcon />}
+      colorScheme="gray"
+      size="sm"
+      onClick={onClear}
+    >
+      Limpar
+    </Button>
   )
 }
 
@@ -37,7 +52,7 @@ export default function FormNavigator() {
       className={styles.formNavigatorContainer}
       direction={'column'}
       id={'formNavigatorContainer'}
-      pt={10}
+      pt={20}
     >
       <Wizard step={step} />
       <Flex
@@ -53,9 +68,7 @@ export default function FormNavigator() {
           justifyContent={'space-between'}
         >
           <Flex>
-            <Button rightIcon={<DeleteIcon />} colorScheme="gray" size="sm">
-              Limpar
-            </Button>
+            <ClearFormButton onClear={() => alert('limpando...')} />
           </Flex>
           <Flex justifyContent={'flex-end'} maxWidth={'900px'}>
             {step > 0 ? (
