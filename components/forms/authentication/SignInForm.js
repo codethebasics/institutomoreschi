@@ -16,7 +16,6 @@ import {
 import styled from '@emotion/styled'
 
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 
 
 const Input = styled.input`
@@ -60,7 +59,7 @@ export default function SignInForm() {
         maxHeight={750}
       >
         <Flex direction={'column'} alignItems={'center'}>
-          <Image height={100} src={'/img/tooth-logo.svg'} />
+          <Image height={100} src={'/img/tooth-logo.svg'} alt="Instituto Moreschi" />
           <Flex>
             <Text
               fontWeight={'bold'}
