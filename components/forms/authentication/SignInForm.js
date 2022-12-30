@@ -6,15 +6,18 @@ import {
   Text,
   Image,
   Tooltip,
-  useToast
+  useToast,
+  Center,
+  Stack,
+  IconButton,
+  Button
 } from '@chakra-ui/react'
 
-import { ThemeContext } from '../../../context/ThemeContext'
 import styled from '@emotion/styled'
 
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
-import { useContext } from 'react'
+
 
 const Input = styled.input`
   background: #ffffff;
@@ -34,45 +37,8 @@ const Input = styled.input`
   }
 `
 
-const setButtonStyleBackgroundColor = type => {
-  switch (type) {
-    case 'primary':
-      return '#0094FF'
-    case 'secondary':
-      return '#222222'
-    default:
-      return '#F0F0F0'
-  }
-}
-
-const setButtonStyleTextColor = type => {
-  switch (type) {
-    case 'primary':
-      return '#FFFFFF'
-    case 'secondary':
-      return '#FFFFFF'
-    default:
-      return '#222222'
-  }
-}
-
-const Button = styled.button`
-  color: ${({ type }) => setButtonStyleTextColor(type)};
-  background: ${({ type }) => setButtonStyleBackgroundColor(type)};
-  border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 1.3rem;
-  font-weight: 500;
-  width: 100%;
-  transition: all 0.2s;
-  &:hover {
-    opacity: 0.9;
-  }
-`
-
 export default function SignInForm() {
   const toast = useToast()
-  const { theme, setTheme } = useContext(ThemeContext)
 
   const message = (type, heading, text) => {
     toast({
@@ -123,10 +89,10 @@ export default function SignInForm() {
             <Input type="password" placeholder="•••••••" />
           </FormControl>
           <FormControl mt={10}>
-            <Flex direction={'column'} alignItems={'center'}>
-              <Button
-                type={'primary'}
-                width={'100%'}
+            <Flex direction={'column'} alignItems={'center'}>              
+              <Button 
+                variant="primary" 
+                width={'100%'} 
                 onClick={() =>
                   message(
                     'info',
@@ -137,26 +103,31 @@ export default function SignInForm() {
               >
                 Entrar
               </Button>
-              <Link mt={5}>Esqueci a senha</Link>
+            </Flex>
+            <Flex
+                mt={5} 
+                width={'100%'}
+                justifyContent='space-between'
+            >
+                <Link>Esqueci a senha</Link>
+                <Link>Registrar</Link>
             </Flex>
           </FormControl>
         </Flex>
-        <Flex direction={'column'} width={'100%'}>
-          <FormControl>
-            <Button width={'100%'}>Cadastro</Button>
-          </FormControl>
-          <Flex justifyContent={'center'} mt={5}>
-            {theme === 'light' ? (
-              <Tooltip label="Modo escuro">
-                <DarkModeOutlinedIcon cursor={'pointer'} />
-              </Tooltip>
-            ) : (
-              <Tooltip label="Modo claro">
-                <LightModeOutlinedIcon cursor={'pointer'} />
-              </Tooltip>
-            )}
-          </Flex>
-        </Flex>
+        <Center>
+            <Stack isInline>
+                <Tooltip label="mudar tema">
+                    <IconButton
+                        icon={ <DarkModeOutlinedIcon /> }
+                        variant="ghost"
+                        colorScheme="blue"
+                        aria-label="alterar tema"
+                    >
+                        Alterar tema
+                    </IconButton>
+                </Tooltip>
+            </Stack>
+        </Center>
       </Flex>
     </Flex>
   )
