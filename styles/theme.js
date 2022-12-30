@@ -9,7 +9,8 @@ export const myNewTheme = extendTheme({
         success: '#0ACE49',
         warning: '#EDD623',
         info: '#52CFF5',
-        danger: '#EB3E3E'
+        danger: '#EB3E3E',
+        light: '#f0f0f0'
     },
     components: {
         Button,

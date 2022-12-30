@@ -5,7 +5,7 @@ const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpe
 
 const baseStyle = definePartsStyle({
     field: {        
-        borderRadius: '4px',
+        borderRadius: '4px !important',
         boxShadow: 'inset 0px 4px 10px rgba(216, 216, 216, 0.25)',
         width: '100%',
         color: '#222',
@@ -20,4 +20,22 @@ const baseStyle = definePartsStyle({
     }    
 })
 
-export const InputStyles = defineMultiStyleConfig({ baseStyle });
+const sizes = definePartsStyle({
+    sm: {
+        field: {
+            borderRadius: '4px'
+        }
+    },
+    md: {
+        field: {
+            borderRadius: '4px'
+        }
+    },
+    lg: {
+        field: {
+            borderRadius: '4px'
+        }
+    }
+})
+
+export const InputStyles = defineMultiStyleConfig({ baseStyle, sizes });

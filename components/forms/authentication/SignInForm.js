@@ -2,15 +2,13 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  Link,
   Text,
   Image,
   useToast,
-  Center,
-  Stack,
   IconButton,
   Button,
-  Input
+  Input,
+  Divider
 } from '@chakra-ui/react'
 
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
@@ -82,28 +80,28 @@ export default function SignInForm() {
                 Entrar
               </Button>
             </Flex>
+            <Divider orientation='horizontal' height={'15px'} py={2} />
             <Flex
                 mt={5} 
                 width={'100%'}
-                justifyContent='space-between'
-            >
-                <Link>Esqueci a senha</Link>
-                <Link>Registrar</Link>
+                direction={'column'}
+            >                
+                <Button mb={2} variant={'light'}>Esqueceu a senha</Button>
+                <Button mb={2} variant={'light'}>Registrar</Button>
+                <Button variant={'light'}>
+                  <IconButton
+                      icon={ <DarkModeOutlinedIcon /> }
+                      variant="ghost"
+                      colorScheme="white"
+                      aria-label="alterar tema"
+                  >
+                      Alterar tema
+                  </IconButton>     
+                </Button>
             </Flex>
           </FormControl>
         </Flex>
-        <Center>
-            <Stack isInline>                
-                <IconButton
-                    icon={ <DarkModeOutlinedIcon /> }
-                    variant="ghost"
-                    colorScheme="blue"
-                    aria-label="alterar tema"
-                >
-                    Alterar tema
-                </IconButton>                
-            </Stack>
-        </Center>
+        
       </Flex>
     </Flex>
   )

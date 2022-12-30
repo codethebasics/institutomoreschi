@@ -14,6 +14,20 @@ export const ButtonStyles = {
             _hover: {
                 opacity: 0.8
             }
+        }),
+        secondary: (props) => ({
+            bg: mode('secondary', 'secondary')(props),
+            color: '#fff',
+            _hover: {
+                opacity: 0.8
+            }
+        }),
+        light: (props) => ({
+            bg: mode('light', 'dark')(props),
+            color: '#222',
+            _hover: {
+                opacity: 0.8
+            }
         })
     },
     defaultProps: {
