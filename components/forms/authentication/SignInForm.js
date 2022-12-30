@@ -5,37 +5,15 @@ import {
   Link,
   Text,
   Image,
-  Tooltip,
   useToast,
   Center,
   Stack,
   IconButton,
-  Button
+  Button,
+  Input
 } from '@chakra-ui/react'
 
-import styled from '@emotion/styled'
-
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
-
-
-const Input = styled.input`
-  background: #ffffff;
-  border: 1px solid #d1d1d1;
-  box-shadow: inset 0px 4px 10px rgba(216, 216, 216, 0.25);
-  border-radius: 4px;
-  width: 100%;
-  padding: 10px;
-  outline: none;
-  color: #222;
-  transition: all 0.2s;
-  &:focus {
-    border-color: #0094ff;
-  }
-  &::placeholder {
-    color: #aaa;
-  }
-`
 
 export default function SignInForm() {
   const toast = useToast()
@@ -60,7 +38,7 @@ export default function SignInForm() {
         maxHeight={750}
       >
         <Flex direction={'column'} alignItems={'center'}>
-          <Image height={100} src={'/img/tooth-logo.svg'} />
+          <Image height={100} src={'/img/tooth-logo.svg'} alt="Instituto Moreschi" />
           <Flex>
             <Text
               fontWeight={'bold'}
@@ -81,12 +59,12 @@ export default function SignInForm() {
         </Flex>
         <Flex direction={'column'} width={'100%'}>
           <FormControl>
-            <FormLabel>E-mail</FormLabel>
-            <Input type="email" placeholder="seu@email.com" />
+            <FormLabel>E-mail</FormLabel>            
+            <Input type="email" placeholder="seu@email.com" size={'lg'} />
           </FormControl>
           <FormControl mt={5}>
             <FormLabel>Senha</FormLabel>
-            <Input type="password" placeholder="•••••••" />
+            <Input type="password" placeholder="•••••••" size={'lg'} />
           </FormControl>
           <FormControl mt={10}>
             <Flex direction={'column'} alignItems={'center'}>              
@@ -115,17 +93,15 @@ export default function SignInForm() {
           </FormControl>
         </Flex>
         <Center>
-            <Stack isInline>
-                <Tooltip label="mudar tema">
-                    <IconButton
-                        icon={ <DarkModeOutlinedIcon /> }
-                        variant="ghost"
-                        colorScheme="blue"
-                        aria-label="alterar tema"
-                    >
-                        Alterar tema
-                    </IconButton>
-                </Tooltip>
+            <Stack isInline>                
+                <IconButton
+                    icon={ <DarkModeOutlinedIcon /> }
+                    variant="ghost"
+                    colorScheme="blue"
+                    aria-label="alterar tema"
+                >
+                    Alterar tema
+                </IconButton>                
             </Stack>
         </Center>
       </Flex>
