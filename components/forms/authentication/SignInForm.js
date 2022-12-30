@@ -36,7 +36,11 @@ export default function SignInForm() {
         maxHeight={750}
       >
         <Flex direction={'column'} alignItems={'center'}>
-          <Image height={100} src={'/img/tooth-logo.svg'} alt="Instituto Moreschi" />
+          <Image
+            height={100}
+            src={'/img/tooth-logo.svg'}
+            alt="Instituto Moreschi"
+          />
           <Flex>
             <Text
               fontWeight={'bold'}
@@ -57,7 +61,7 @@ export default function SignInForm() {
         </Flex>
         <Flex direction={'column'} width={'100%'}>
           <FormControl>
-            <FormLabel>E-mail</FormLabel>            
+            <FormLabel>E-mail</FormLabel>
             <Input type="email" placeholder="seu@email.com" size={'lg'} />
           </FormControl>
           <FormControl mt={5}>
@@ -65,10 +69,10 @@ export default function SignInForm() {
             <Input type="password" placeholder="•••••••" size={'lg'} />
           </FormControl>
           <FormControl mt={10}>
-            <Flex direction={'column'} alignItems={'center'}>              
-              <Button 
-                variant="primary" 
-                width={'100%'} 
+            <Flex direction={'column'} alignItems={'center'}>
+              <Button
+                variant="primary"
+                width={'100%'}
                 onClick={() =>
                   message(
                     'info',
@@ -80,28 +84,25 @@ export default function SignInForm() {
                 Entrar
               </Button>
             </Flex>
-            <Divider orientation='horizontal' height={'15px'} py={2} />
-            <Flex
-                mt={5} 
-                width={'100%'}
-                direction={'column'}
-            >                
-                <Button mb={2} variant={'light'}>Esqueceu a senha</Button>
-                <Button mb={2} variant={'light'}>Registrar</Button>
-                <Button variant={'light'}>
-                  <IconButton
-                      icon={ <DarkModeOutlinedIcon /> }
-                      variant="ghost"
-                      colorScheme="white"
-                      aria-label="alterar tema"
-                  >
-                      Alterar tema
-                  </IconButton>     
-                </Button>
+            <Divider orientation="horizontal" height={'15px'} py={2} />
+            <Flex mt={5} width={'100%'} direction={'column'}>
+              <Button mb={2} variant={'light'}>
+                Esqueceu a senha
+              </Button>
+              <Button mb={2} variant={'light'}>
+                Registrar
+              </Button>
+              <IconButton
+                icon={<DarkModeOutlinedIcon />}
+                variant="light"
+                colorScheme="white"
+                aria-label="alterar tema"
+              >
+                Alterar tema
+              </IconButton>
             </Flex>
           </FormControl>
         </Flex>
-        
       </Flex>
     </Flex>
   )
