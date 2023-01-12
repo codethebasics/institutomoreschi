@@ -52,7 +52,7 @@ export default function SignInForm() {
             <Text
               fontWeight={'bold'}
               fontSize={'2rem'}
-              color={'#0094FF'}
+              color={'primary'}
               textShadow={'0 3px 10px #ddd'}
             >
               Moreschi
@@ -92,14 +92,6 @@ export default function SignInForm() {
               <Button mb={2} variant={'light'}>
                 Registrar
               </Button>
-              <IconButton
-                icon={<DarkModeOutlinedIcon />}
-                variant="light"
-                colorScheme="white"
-                aria-label="alterar tema"
-              >
-                Alterar tema
-              </IconButton>
             </Flex>
           </FormControl>
         </Flex>
