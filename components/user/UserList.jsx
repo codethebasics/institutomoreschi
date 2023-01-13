@@ -19,18 +19,18 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  FormControl,
-  FormLabel,
   InputGroup,
   InputRightElement
 } from '@chakra-ui/react'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { format } from 'date-fns'
+
+import * as UserService from './service/UserService'
 import RoleList from '../role/RoleList'
 
+import { useEffect, useState } from 'react'
+import { format } from 'date-fns'
+
 async function fetchUsers() {
-  return (await axios.get('http://localhost:3333/users')).data
+  return (await UserService.list()).data
 }
 
 function Filter({ data, setData }) {
@@ -50,13 +50,24 @@ function Filter({ data, setData }) {
 
 const ConfirmDelete = ({ isOpen, onConfirm, onClose }) => {
   const [show, setShow] = useState(false)
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   const handleClick = () => {
     setShow(!show)
   }
 
+  const handleOnConfirm = () => {
+    setConfirmPassword('')
+    onConfirm()
+  }
+
+  const handleOnClose = () => {
+    setConfirmPassword('')
+    onClose(false)
+  }
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={handleOnClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader></ModalHeader>
@@ -76,6 +87,8 @@ const ConfirmDelete = ({ isOpen, onConfirm, onClose }) => {
                 pr="4.5rem"
                 type={show ? 'text' : 'password'}
                 placeholder="Confirme com a senha"
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
               />
               <InputRightElement width="4.5rem">
                 <Button h="1.75rem" size="sm" onClick={handleClick} mr={2}>
@@ -87,10 +100,15 @@ const ConfirmDelete = ({ isOpen, onConfirm, onClose }) => {
         </ModalBody>
         <ModalFooter>
           <Flex>
-            <Button colorScheme="red" mr={3} onClick={onConfirm}>
+            <Button
+              colorScheme="red"
+              mr={3}
+              onClick={handleOnConfirm}
+              disabled={!confirmPassword.length}
+            >
               Confirmar
             </Button>
-            <Button variant={'light'} mr={3} onClick={onClose}>
+            <Button variant={'light'} mr={3} onClick={handleOnClose}>
               Fechar
             </Button>
           </Flex>
@@ -120,16 +138,23 @@ export default function UserList() {
     setUserSelected(user)
   }
 
-  const excluir = () => {
-    console.log('excluindo...', userSelected)
+  const excluir = async () => {
+    await UserService.remove(userSelected)
+    fetchUsers()
+      .then(users => {
+        setList(users)
+        setFilteredList(users)
+        setConfirmDelete(false)
+      })
+      .catch(error => console.error('Erro', error))
   }
 
   return (
     <Flex direction={'column'} overflowY={'auto'} p={5}>
       <ConfirmDelete
         isOpen={confirmDelete}
-        onClose={() => setConfirmDelete(false)}
         onConfirm={excluir}
+        onClose={() => setConfirmDelete(false)}
       />
       <Flex overflowX={'auto'} direction={'column'}>
         <Box mb={5}>
@@ -194,7 +219,7 @@ export default function UserList() {
               <Tr>
                 <Td colSpan={6}>
                   <Flex justifyContent={'flex-end'} alignItems={'center'}>
-                    <Text mr={1}>{list.length}</Text>
+                    <Text mr={1}>{list && (list.length || 0)}</Text>
                     <Text>usuários encontrados</Text>
                   </Flex>
                 </Td>
