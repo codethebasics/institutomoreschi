@@ -12,6 +12,15 @@ export async function list() {
   }
 }
 
+export async function findById(id) {
+  try {
+    return await client.get(`/users?id=${id}`)
+  } catch (e) {
+    console.error(e)
+    throw e
+  }
+}
+
 export async function create(user) {
   try {
     return await client.post('/users', {
